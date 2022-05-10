@@ -26,13 +26,17 @@ SECRET_KEY = 'ai!(=88bo0zays=yp#d0$ygb64ke9&8mmj32d_u$2m_xdn!fy0'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LOGIN_REDIRECT_URL = 'dashboard'
 
  
-# Application definition
+# Application definition 
 
 INSTALLED_APPS = [
     'cars.apps.CarsConfig',
     'pages.apps.PagesConfig', # my pages app setings
+    'accounts.apps.AccountsConfig',
+    'contactus.apps.ContactusConfig',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +45,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'django.contrib.humanize',
+    
+    'django.contrib.sites',
+    'allauth',                                
+    'allauth.account',
+    'allauth.socialaccount',
+
+    ### Providers 
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +148,21 @@ STATICFILES_DIRS = [
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+
+
+# messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+SITE_ID = 1  
+
+ 
+
+# ## Emaile sanding 
+EMAIL_HOST = 'smtp.gmail.com' 
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'jsah4501@gmail.com' 
+EMAIL_HOST_PASSWORD = '$#@JituO1432'
+EMAIL_USE_TLS = True
