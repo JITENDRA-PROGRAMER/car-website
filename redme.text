@@ -5,3 +5,9 @@ pip install pysqul2
 pip install pillow
 pip install django-ckeditor
 pip install django-multiselectfile
+pip uninstall django-allauth==0.47.0
+pip install django-allauth==0.42.0
+
+NEED TO PROJECT DIPLY create jison file project derictory command is  "python manage.py dumpdata --natural-foreign --natural-primary -e contenttypes -e auth.Permission --indent 4 > project_dump.json"
+Requrments.txt file create command " pip freeze > requirements.txt "
+" pip freeze "  command check which package use inside project
