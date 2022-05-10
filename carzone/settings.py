@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from distutils.debug import DEBUG
+from email.policy import default
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +26,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ai!(=88bo0zays=yp#d0$ygb64ke9&8mmj32d_u$2m_xdn!fy0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG=False
 
 ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = 'dashboard'
@@ -64,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'carzone.urls'
@@ -90,17 +95,18 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "carzone",
-        'USER': "postgres",
-        'PASSWORD': "jitu",
-        'HOST': "localhost",
-        'PORT': "5432",  # 5432 by default
-    }
-}
+# DATABASES = {
+#      'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': "carzone",
+#         'USER': "postgres",
+#         'PASSWORD': "jitu",
+#         'HOST': "localhost",
+#         'PORT': "5432",  # 5432 by default
+#     }
+# }
 
+DATABASES = {'default': dj_database_url.config(default='postgres://postgres:jitu@localhost/carzone')}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -166,3 +172,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'jsah4501@gmail.com' 
 EMAIL_HOST_PASSWORD = '$#@JituO1432'
 EMAIL_USE_TLS = True
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
