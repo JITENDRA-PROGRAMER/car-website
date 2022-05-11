@@ -30,7 +30,7 @@ SECRET_KEY = 'ai!(=88bo0zays=yp#d0$ygb64ke9&8mmj32d_u$2m_xdn!fy0'
 DEBUG=False
 
 ALLOWED_HOSTS = ['cryptic-earth-37844.herokuapp.com','carzone.co','www.carzone.co']
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = 'dashboard' 
 
  
 # Application definition 
